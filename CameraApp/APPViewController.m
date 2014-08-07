@@ -7,18 +7,24 @@
 //
 
 #import "APPViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface APPViewController ()
+
+@property (strong, atomic) ALAssetsLibrary *library;
 
 @end
 
 @implementation APPViewController
+
+@synthesize library;
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // if camera device not available (Aka on simulator)
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
     
         UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -30,6 +36,16 @@
         [myAlertView show];
         
     }
+    
+    // Add Lapse album to camera
+    self.library = [[ALAssetsLibrary alloc] init];
+    [self.library addAssetsGroupAlbumWithName:@"Lapse"
+                                  resultBlock:^(ALAssetsGroup *group) {
+                                      NSLog(@"added album:Lapse");
+                                  }
+                                 failureBlock:^(NSError *error) {
+                                     NSLog(@"error adding album");
+                                 }];
     
 }
 
@@ -76,7 +92,43 @@
     self.imageView.image = photo;
     
     // to save to camera roll
-    UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
+    //UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
+
+    // find Lapse album
+    __block ALAssetsGroup* groupToAddTo;
+    [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum
+                                usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                                    if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:@"Lapse"]) {
+                                        NSLog(@"found album Lapse");
+                                        groupToAddTo = group;
+                                    }
+                                }
+                              failureBlock:^(NSError* error) {
+                                  NSLog(@"failed to enumerate albums:\nError: %@", [error localizedDescription]);
+                              }];
+    // save image to Lapse album
+    CGImageRef img = [photo CGImage];
+    [self.library writeImageToSavedPhotosAlbum:img
+                                      metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
+                               completionBlock:^(NSURL* assetURL, NSError* error) {
+                                   if (error.code == 0) {
+                                       NSLog(@"saved image completed:\nurl: %@", assetURL);
+                                       
+                                       // try to get the asset
+                                       [self.library assetForURL:assetURL
+                                                     resultBlock:^(ALAsset *asset) {
+                                                         // assign the photo to the album
+                                                         [groupToAddTo addAsset:asset];
+                                                         NSLog(@"Added %@ to Lapse", [[asset defaultRepresentation] filename]);
+                                                     }
+                                                    failureBlock:^(NSError* error) {
+                                                        NSLog(@"failed to retrieve image asset:\nError: %@ ", [error localizedDescription]);
+                                                    }];
+                                   }
+                                   else {
+                                       NSLog(@"saved image failed.\nerror code %li\n%@", (long)error.code, [error localizedDescription]);
+                                   }
+                               }];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
