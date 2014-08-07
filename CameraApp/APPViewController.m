@@ -72,7 +72,11 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     //UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.imageView.image = (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *photo = (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.imageView.image = photo;
+    
+    // to save to camera roll
+    UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
