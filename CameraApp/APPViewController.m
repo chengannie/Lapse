@@ -21,8 +21,6 @@
 @interface APPViewController ()
 
 @property (strong, atomic) ALAssetsLibrary *library;
-@property (nonatomic) UIImagePickerController *picker;
--(void)pictureCaptured:(NSNotification*) message;
 
 @end
 
@@ -70,56 +68,50 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     
-    self.picker = picker;
-    
     picker.delegate = self;
     //picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-    
-    // Make camera view full screen:
-    // picker.wantsFullScreenLayout = YES;
-    // picker.cameraViewTransform = CGAffineTransformScale(picker.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
+//    picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
     
     if (self.imageView) {
-//        UIImageView *overlayView = self.imageView;
-//        [overlayView setAlpha:0.5f];
-//        picker.cameraOverlayView = overlayView;
-        OverlayImageView* overlayView = [[OverlayImageView alloc] init];
-        
-        // mirror overlay if selfie
-        if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
-        {
-//            UIImage* unflipped = self.imageView.image;
-            UIImage* flippedImage = [UIImage imageWithCGImage:self.imageView.image.CGImage scale:self.imageView.image.scale orientation:UIImageOrientationLeftMirrored];
-            self.imageView.image = flippedImage;
-            [overlayView addSubview:self.imageView];
-            overlayView.imageView = self.imageView;
-//            self.imageView.image = unflipped;
-//        }
-//        else {
-//            [overlayView addSubview:self.imageView];
-        }
+        UIImageView *overlayView = self.imageView;
         [overlayView setAlpha:0.5f];
         picker.cameraOverlayView = overlayView;
+//        OverlayImageView* overlayView = [[OverlayImageView alloc] init];
+        
+        // mirror overlay if selfie
+//        if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
+//        {
+////            UIImage* unflipped = self.imageView.image;
+//            UIImage* flippedImage = [UIImage imageWithCGImage:self.imageView.image.CGImage scale:self.imageView.image.scale orientation:UIImageOrientationLeftMirrored];
+//            self.imageView.image = flippedImage;
+//            [overlayView addSubview:self.imageView];
+//            overlayView.imageView = self.imageView;
+////            self.imageView.image = unflipped;
+////        }
+////        else {
+////            [overlayView addSubview:self.imageView];
+//        }
+//        [overlayView setAlpha:0.5f];
+//        picker.cameraOverlayView = overlayView;
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pictureCaptured:) name:@"_UIImagePickerControllerUserDidCaptureItem" object:nil ];
+    // DOESN'T WORK BECAUSE DOESN'T FLIP FOR PREVIEW
+    
+//    [[NSNotificationCenter defaultCenter] addObserverForName:@"_UIImagePickerControllerUserDidCaptureItem" object:nil queue:nil usingBlock:^(NSNotification *note) {
+//        if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
+//        {
+//            // flip overlay if front facing
+////            OverlayImageView* overlay = (OverlayImageView* )picker.cameraOverlayView;
+////            UIImage* flippedOverlay = [UIImage imageWithCGImage:overlay.image.CGImage scale:overlay.image.scale orientation:UIImageOrientationLeftMirrored];
+////            overlay.image = flippedOverlay;
+//            //picker.cameraOverlayView = nil;
+//            
+//        }
+//    }];
     
     [self presentViewController:picker animated:YES completion:nil];
     
-}
-
--(void)pictureCaptured:(NSNotification *)message {
-    // mirror overlay for preview if selfie
-    // ATTEMPT TO AFFECT PREVIEW SCREEN OVERLAY, BUT DOESN'T WORK :(
-    if (self.picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
-    {
-        OverlayImageView* overlay = (OverlayImageView* )self.picker.cameraOverlayView;
-        UIImage* flippedOverlay = [UIImage imageWithCGImage:overlay.image.CGImage scale:overlay.image.scale orientation:UIImageOrientationLeftMirrored];
-        overlay.image = flippedOverlay;
-        self.picker.cameraOverlayView = overlay;
-    }
 }
 
 - (IBAction)selectPhoto:(UIButton *)sender {
@@ -130,16 +122,34 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController:picker animated:YES completion:NULL];
-
-    
 }
 
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    UIImage* photo = info[UIImagePickerControllerOriginalImage];
+    __block UIImage* photo = info[UIImagePickerControllerOriginalImage];
     self.imageView.image = photo;
+    
+    
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+//    [[NSNotificationCenter defaultCenter] addObserverForName:@"_UIImagePickerControllerUserDidCaptureItem" object:nil queue:nil usingBlock:^(NSNotification *note) {
+        if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
+        {
+            // flip photo if front facing
+            UIImage * flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
+            photo = flippedImage;
+            self.imageView.image = photo;
+            
+            // flip overlay if front facing
+//            OverlayImageView* overlay = (OverlayImageView* )picker.cameraOverlayView;
+//            UIImage* flippedOverlay = [UIImage imageWithCGImage:overlay.image.CGImage scale:overlay.image.scale orientation:UIImageOrientationLeftMirrored];
+//            overlay.image = flippedOverlay;
+            picker.cameraOverlayView = nil;
+        }
+//    }];
+    }
     
     // set picture as new background
     UIGraphicsBeginImageContext(self.imageView.frame.size);
