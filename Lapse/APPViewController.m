@@ -136,7 +136,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Overlay Original", @"Set as Original", nil];
+                                                    otherButtonTitles:@"Use Pinned Photo", @"Pin", nil];
     [actionSheet showInView:self.view];
 //    // attempts at creating cooler looking modal view, but decided i didn't care enough
 //    APPOriginalModalViewController* original = [[APPOriginalModalViewController alloc] init];
@@ -151,7 +151,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
-        // Overlay Original - set Original as overlayView
+        // Use Pinned Photo - set Original as overlayView
         case 0: {
             NSString *imagePath = [[NSUserDefaults standardUserDefaults] objectForKey:@"original"];
             if (imagePath) {
@@ -169,7 +169,7 @@
         }
             break;
             
-        // Set as Original - sets current image as original and saves in NSUserDefaults
+        // Pin - sets current image as original and saves in NSUserDefaults
         case 1: {
             UIImage* original = self.imageView.image;
             

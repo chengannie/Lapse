@@ -29,6 +29,7 @@
 		596C682919B06BD400ED7472 /* launch-screen-lapse-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 596C682819B06BD400ED7472 /* launch-screen-lapse-bottom.png */; };
 		596C682D19B11B6700ED7472 /* APPOriginalModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596C682B19B11B6700ED7472 /* APPOriginalModalViewController.m */; };
 		596C682E19B11B6700ED7472 /* APPOriginalModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596C682C19B11B6700ED7472 /* APPOriginalModalViewController.xib */; };
+		596C683019B131EE00ED7472 /* pin-lapse.png in Resources */ = {isa = PBXBuildFile; fileRef = 596C682F19B131EE00ED7472 /* pin-lapse.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		596C682A19B11B6700ED7472 /* APPOriginalModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPOriginalModalViewController.h; sourceTree = "<group>"; };
 		596C682B19B11B6700ED7472 /* APPOriginalModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPOriginalModalViewController.m; sourceTree = "<group>"; };
 		596C682C19B11B6700ED7472 /* APPOriginalModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPOriginalModalViewController.xib; sourceTree = "<group>"; };
+		596C682F19B131EE00ED7472 /* pin-lapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin-lapse.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		35791CC5171588890011FD1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				596C682F19B131EE00ED7472 /* pin-lapse.png */,
 				596C682819B06BD400ED7472 /* launch-screen-lapse-bottom.png */,
 				593C7B4319B0651D00443B53 /* launch-screen-lapse.png */,
 				593C7B4119B05C4900443B53 /* launch-screen-lapse-blank.png */,
@@ -212,6 +215,7 @@
 				5902E8DE19B04F2B009C039B /* library-button-custom.png in Resources */,
 				5902E8D819B04F2B009C039B /* camera-button-custom.png in Resources */,
 				5902E8DA19B04F2B009C039B /* Default-568h@2x.png in Resources */,
+				596C683019B131EE00ED7472 /* pin-lapse.png in Resources */,
 				592C86C519B03D4700A9977C /* Images.xcassets in Resources */,
 				5902E8DB19B04F2B009C039B /* Default.png in Resources */,
 				593C7B4219B05C4900443B53 /* launch-screen-lapse-blank.png in Resources */,
