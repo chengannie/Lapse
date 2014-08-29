@@ -16,15 +16,29 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[APPViewController alloc] initWithNibName:@"APPViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
     
+    // read image from NSUserDefaults
+    NSString *imagePath = [[NSUserDefaults standardUserDefaults] objectForKey:@"image"];
+    if (imagePath) {
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfFile:imagePath]];
+        
+        if (image) {
+            self.window.rootViewController = [[APPViewController alloc] initWithImage:image];
+        }
+        else {
+            // if no image, use normal init
+            self.window.rootViewController = [[APPViewController alloc] initWithNibName:@"APPViewController" bundle:nil];
+        }
+    }
+    
+    // set background as Lapse launch screen
     UIGraphicsBeginImageContext(self.window.frame.size);
     [[UIImage imageNamed:@"launch-screen-lapse.png"] drawInRect:self.window.bounds];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage* background = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.window.backgroundColor = [UIColor colorWithPatternImage:image];
+    self.window.backgroundColor = [UIColor colorWithPatternImage:background];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -38,6 +52,23 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    //http://stackoverflow.com/questions/6648518/save-images-in-nsuserdefaults
+    // Get image data. Here you can use UIImagePNGRepresentation if you need transparency
+    UIImage* image = ((APPViewController* )self.window.rootViewController).imageView.image;
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    
+    // Get image path in user's folder and store file with name image_CurrentTimestamp.jpg (see documentsPathForFileName below)
+    NSString *imagePath = [self documentsPathForFileName:[NSString stringWithFormat:@"image_%f.jpg", [NSDate timeIntervalSinceReferenceDate]]];
+    
+    // Write image data to user's folder
+    [imageData writeToFile:imagePath atomically:YES];
+    
+    // Store path in NSUserDefaults
+    [[NSUserDefaults standardUserDefaults] setObject:imagePath forKey:@"image"];
+    
+    // Sync user defaults
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -54,5 +85,14 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+// used when saving most recent image in NSUserDefaults
+- (NSString *)documentsPathForFileName:(NSString *)name {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    
+    return [documentsPath stringByAppendingPathComponent:name];
+}
+
 
 @end

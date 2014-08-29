@@ -22,6 +22,7 @@
 
 @property (strong, atomic) ALAssetsLibrary *library;
 @property (weak, nonatomic) IBOutlet UIImageView *buttonbackground;
+@property (strong, nonatomic) UIImage* userDefaultsImage;
 
 @end
 
@@ -29,10 +30,37 @@
 
 @synthesize library;
 
+// special init method if image retrieved from NSUserDefaults
+- (instancetype)initWithImage:(UIImage *)image
+{
+    self = [super initWithNibName:@"APPViewController" bundle:nil];
+    
+    if (self){
+        self.userDefaultsImage = image;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // if saved image was retrieved, set as self.imageView to be overlayed later
+    if (self.userDefaultsImage)
+    {
+        self.imageView.image = self.userDefaultsImage;
+        
+        // also set retrieved image as background for later (useful if user takes picture but then cancels -- this will get picture back again.)
+        UIGraphicsBeginImageContext(self.imageView.frame.size);
+        [self.userDefaultsImage drawInRect:self.imageView.bounds];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+        // set button background to lapse colors
+        self.buttonbackground.image = [UIImage imageNamed:@"launch-screen-lapse-bottom.png"];
+    }
     
     // if camera device not available (Aka on simulator)
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -213,16 +241,15 @@
                                    }];
     }
     
-    [picker dismissViewControllerAnimated:YES completion:^{
-        // maybe...
-    }];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
 
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
+
+// to archive most recently taken image
 
 @end
