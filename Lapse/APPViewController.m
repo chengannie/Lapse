@@ -71,7 +71,7 @@
     picker.delegate = self;
     //picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
     
     if (self.imageView) {
         UIImageView *overlayView = self.imageView;
@@ -150,6 +150,15 @@
         }
 //    }];
     }
+    // flip photo if selected because FOR MY USE CASE ONLY, i'll only be selecting selfies that need to be flipped when i take the picture
+    else if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
+    {
+        // flip photo if front facing
+        UIImage * flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
+        photo = flippedImage;
+        self.imageView.image = photo;
+    }
+
     
     // set picture as new background
     UIGraphicsBeginImageContext(self.imageView.frame.size);

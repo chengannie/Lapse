@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35791CBF171588890011FD1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35791CBE171588890011FD1F /* UIKit.framework */; };
-		35791CC1171588890011FD1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35791CC0171588890011FD1F /* Foundation.framework */; };
-		35791CC3171588890011FD1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35791CC2171588890011FD1F /* CoreGraphics.framework */; };
-		35791CC9171588890011FD1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35791CC7171588890011FD1F /* InfoPlist.strings */; };
-		35791CCB171588890011FD1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35791CCA171588890011FD1F /* main.m */; };
-		35791CCF171588890011FD1F /* APPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35791CCE171588890011FD1F /* APPAppDelegate.m */; };
-		35791CD1171588890011FD1F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35791CD0171588890011FD1F /* Default.png */; };
-		35791CD3171588890011FD1F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35791CD2171588890011FD1F /* Default@2x.png */; };
-		35791CD5171588890011FD1F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35791CD4171588890011FD1F /* Default-568h@2x.png */; };
-		35791CD8171588890011FD1F /* APPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35791CD7171588890011FD1F /* APPViewController.m */; };
-		35791CDB171588890011FD1F /* APPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35791CD9171588890011FD1F /* APPViewController.xib */; };
-		591E71BB19935C110023560D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591E71BA19935C110023560D /* AssetsLibrary.framework */; };
-		594B5E1F199370DC0039E7C4 /* OverlayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594B5E1E199370DC0039E7C4 /* OverlayImageView.m */; };
+		5902E8CB19B04EFF009C039B /* APPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5902E8C819B04EFF009C039B /* APPAppDelegate.m */; };
+		5902E8CC19B04EFF009C039B /* APPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5902E8CA19B04EFF009C039B /* APPViewController.m */; };
+		5902E8CF19B04F09009C039B /* OverlayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5902E8CE19B04F09009C039B /* OverlayImageView.m */; };
+		5902E8D819B04F2B009C039B /* camera-button-custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 5902E8D019B04F2B009C039B /* camera-button-custom.png */; };
+		5902E8D919B04F2B009C039B /* camera-icon-custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 5902E8D119B04F2B009C039B /* camera-icon-custom.png */; };
+		5902E8DA19B04F2B009C039B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5902E8D219B04F2B009C039B /* Default-568h@2x.png */; };
+		5902E8DB19B04F2B009C039B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5902E8D319B04F2B009C039B /* Default.png */; };
+		5902E8DC19B04F2B009C039B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5902E8D419B04F2B009C039B /* Default@2x.png */; };
+		5902E8DE19B04F2B009C039B /* library-button-custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 5902E8D719B04F2B009C039B /* library-button-custom.png */; };
+		5902E8E219B04F95009C039B /* APPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5902E8E119B04F95009C039B /* APPViewController.xib */; };
+		5902E8E819B0507B009C039B /* APPViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 5902E8E119B04F95009C039B /* APPViewController.xib */; };
+		5902E8EB19B05467009C039B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35791CC2171588890011FD1F /* CoreGraphics.framework */; };
+		5902E8EC19B0546C009C039B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591E71BA19935C110023560D /* AssetsLibrary.framework */; };
+		5902E8ED19B05472009C039B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35791CBE171588890011FD1F /* UIKit.framework */; };
+		5902E8EE19B05478009C039B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35791CC0171588890011FD1F /* Foundation.framework */; };
+		592C86C519B03D4700A9977C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 592C86C419B03D4700A9977C /* Images.xcassets */; };
+		593C7B3E19B0567300443B53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5902E8E319B04FBF009C039B /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,21 +31,26 @@
 		35791CBE171588890011FD1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		35791CC0171588890011FD1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		35791CC2171588890011FD1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		35791CC6171588890011FD1F /* Lapse-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Lapse-Info.plist"; sourceTree = "<group>"; };
-		35791CC8171588890011FD1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		35791CCA171588890011FD1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		35791CCC171588890011FD1F /* Lapse-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lapse-Prefix.pch"; sourceTree = "<group>"; };
-		35791CCD171588890011FD1F /* APPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPAppDelegate.h; sourceTree = "<group>"; };
-		35791CCE171588890011FD1F /* APPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APPAppDelegate.m; sourceTree = "<group>"; };
-		35791CD0171588890011FD1F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		35791CD2171588890011FD1F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		35791CD4171588890011FD1F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		35791CD6171588890011FD1F /* APPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPViewController.h; sourceTree = "<group>"; };
-		35791CD7171588890011FD1F /* APPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APPViewController.m; sourceTree = "<group>"; };
-		35791CDA171588890011FD1F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/APPViewController.xib; sourceTree = "<group>"; };
+		5902E8C719B04EFF009C039B /* APPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APPAppDelegate.h; path = Lapse/APPAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		5902E8C819B04EFF009C039B /* APPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APPAppDelegate.m; path = Lapse/APPAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		5902E8C919B04EFF009C039B /* APPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APPViewController.h; path = Lapse/APPViewController.h; sourceTree = SOURCE_ROOT; };
+		5902E8CA19B04EFF009C039B /* APPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APPViewController.m; path = Lapse/APPViewController.m; sourceTree = SOURCE_ROOT; };
+		5902E8CD19B04F09009C039B /* OverlayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayImageView.h; path = Lapse/OverlayImageView.h; sourceTree = SOURCE_ROOT; };
+		5902E8CE19B04F09009C039B /* OverlayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayImageView.m; path = Lapse/OverlayImageView.m; sourceTree = SOURCE_ROOT; };
+		5902E8D019B04F2B009C039B /* camera-button-custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera-button-custom.png"; path = "Lapse/camera-button-custom.png"; sourceTree = SOURCE_ROOT; };
+		5902E8D119B04F2B009C039B /* camera-icon-custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera-icon-custom.png"; path = "Lapse/camera-icon-custom.png"; sourceTree = SOURCE_ROOT; };
+		5902E8D219B04F2B009C039B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Lapse/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		5902E8D319B04F2B009C039B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Lapse/Default.png; sourceTree = SOURCE_ROOT; };
+		5902E8D419B04F2B009C039B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Lapse/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		5902E8D519B04F2B009C039B /* Lapse-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Lapse-Info.plist"; path = "Lapse/Lapse-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5902E8D619B04F2B009C039B /* Lapse-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Lapse-Prefix.pch"; path = "Lapse/Lapse-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		5902E8D719B04F2B009C039B /* library-button-custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "library-button-custom.png"; path = "Lapse/library-button-custom.png"; sourceTree = SOURCE_ROOT; };
+		5902E8DF19B04F8E009C039B /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Lapse/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		5902E8E119B04F95009C039B /* APPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APPViewController.xib; path = Lapse/APPViewController.xib; sourceTree = SOURCE_ROOT; };
+		5902E8E319B04FBF009C039B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Lapse/main.m; sourceTree = SOURCE_ROOT; };
+		5902E8E919B05319009C039B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		591E71BA19935C110023560D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		594B5E1D199370DC0039E7C4 /* OverlayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayImageView.h; sourceTree = "<group>"; };
-		594B5E1E199370DC0039E7C4 /* OverlayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayImageView.m; sourceTree = "<group>"; };
+		592C86C419B03D4700A9977C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Lapse/Images.xcassets; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,10 +58,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				591E71BB19935C110023560D /* AssetsLibrary.framework in Frameworks */,
-				35791CBF171588890011FD1F /* UIKit.framework in Frameworks */,
-				35791CC1171588890011FD1F /* Foundation.framework in Frameworks */,
-				35791CC3171588890011FD1F /* CoreGraphics.framework in Frameworks */,
+				5902E8EE19B05478009C039B /* Foundation.framework in Frameworks */,
+				5902E8ED19B05472009C039B /* UIKit.framework in Frameworks */,
+				5902E8EC19B0546C009C039B /* AssetsLibrary.framework in Frameworks */,
+				5902E8EB19B05467009C039B /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +88,7 @@
 		35791CBD171588890011FD1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5902E8E919B05319009C039B /* CoreData.framework */,
 				591E71BA19935C110023560D /* AssetsLibrary.framework */,
 				35791CBE171588890011FD1F /* UIKit.framework */,
 				35791CC0171588890011FD1F /* Foundation.framework */,
@@ -90,29 +100,32 @@
 		35791CC4171588890011FD1F /* Lapse */ = {
 			isa = PBXGroup;
 			children = (
-				35791CCD171588890011FD1F /* APPAppDelegate.h */,
-				35791CCE171588890011FD1F /* APPAppDelegate.m */,
-				35791CD6171588890011FD1F /* APPViewController.h */,
-				35791CD7171588890011FD1F /* APPViewController.m */,
-				35791CD9171588890011FD1F /* APPViewController.xib */,
-				594B5E1D199370DC0039E7C4 /* OverlayImageView.h */,
-				594B5E1E199370DC0039E7C4 /* OverlayImageView.m */,
+				5902E8C719B04EFF009C039B /* APPAppDelegate.h */,
+				5902E8C819B04EFF009C039B /* APPAppDelegate.m */,
+				5902E8C919B04EFF009C039B /* APPViewController.h */,
+				5902E8CA19B04EFF009C039B /* APPViewController.m */,
+				5902E8E119B04F95009C039B /* APPViewController.xib */,
+				5902E8CD19B04F09009C039B /* OverlayImageView.h */,
+				5902E8CE19B04F09009C039B /* OverlayImageView.m */,
+				592C86C419B03D4700A9977C /* Images.xcassets */,
 				35791CC5171588890011FD1F /* Supporting Files */,
 			);
-			name = Lapse;
-			path = CameraApp;
+			path = Lapse;
 			sourceTree = "<group>";
 		};
 		35791CC5171588890011FD1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				35791CC6171588890011FD1F /* Lapse-Info.plist */,
-				35791CC7171588890011FD1F /* InfoPlist.strings */,
-				35791CCA171588890011FD1F /* main.m */,
-				35791CCC171588890011FD1F /* Lapse-Prefix.pch */,
-				35791CD0171588890011FD1F /* Default.png */,
-				35791CD2171588890011FD1F /* Default@2x.png */,
-				35791CD4171588890011FD1F /* Default-568h@2x.png */,
+				5902E8D019B04F2B009C039B /* camera-button-custom.png */,
+				5902E8D119B04F2B009C039B /* camera-icon-custom.png */,
+				5902E8D219B04F2B009C039B /* Default-568h@2x.png */,
+				5902E8D319B04F2B009C039B /* Default.png */,
+				5902E8D419B04F2B009C039B /* Default@2x.png */,
+				5902E8D519B04F2B009C039B /* Lapse-Info.plist */,
+				5902E8D619B04F2B009C039B /* Lapse-Prefix.pch */,
+				5902E8DF19B04F8E009C039B /* InfoPlist.strings */,
+				5902E8D719B04F2B009C039B /* library-button-custom.png */,
+				5902E8E319B04FBF009C039B /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -133,7 +146,7 @@
 			dependencies = (
 			);
 			name = Lapse;
-			productName = CameraApp;
+			productName = Lapse;
 			productReference = 35791CBB171588890011FD1F /* Lapse.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -146,6 +159,11 @@
 				CLASSPREFIX = APP;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Appcoda;
+				TargetAttributes = {
+					35791CBA171588890011FD1F = {
+						DevelopmentTeam = W242WQYTBU;
+					};
+				};
 			};
 			buildConfigurationList = 35791CB6171588880011FD1F /* Build configuration list for PBXProject "Lapse" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -169,11 +187,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35791CC9171588890011FD1F /* InfoPlist.strings in Resources */,
-				35791CD1171588890011FD1F /* Default.png in Resources */,
-				35791CD3171588890011FD1F /* Default@2x.png in Resources */,
-				35791CD5171588890011FD1F /* Default-568h@2x.png in Resources */,
-				35791CDB171588890011FD1F /* APPViewController.xib in Resources */,
+				5902E8D919B04F2B009C039B /* camera-icon-custom.png in Resources */,
+				5902E8E219B04F95009C039B /* APPViewController.xib in Resources */,
+				5902E8DE19B04F2B009C039B /* library-button-custom.png in Resources */,
+				5902E8D819B04F2B009C039B /* camera-button-custom.png in Resources */,
+				5902E8DA19B04F2B009C039B /* Default-568h@2x.png in Resources */,
+				592C86C519B03D4700A9977C /* Images.xcassets in Resources */,
+				5902E8DB19B04F2B009C039B /* Default.png in Resources */,
+				5902E8DC19B04F2B009C039B /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,33 +205,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35791CCB171588890011FD1F /* main.m in Sources */,
-				594B5E1F199370DC0039E7C4 /* OverlayImageView.m in Sources */,
-				35791CCF171588890011FD1F /* APPAppDelegate.m in Sources */,
-				35791CD8171588890011FD1F /* APPViewController.m in Sources */,
+				593C7B3E19B0567300443B53 /* main.m in Sources */,
+				5902E8E819B0507B009C039B /* APPViewController.xib in Sources */,
+				5902E8CC19B04EFF009C039B /* APPViewController.m in Sources */,
+				5902E8CF19B04F09009C039B /* OverlayImageView.m in Sources */,
+				5902E8CB19B04EFF009C039B /* APPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		35791CC7171588890011FD1F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35791CC8171588890011FD1F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		35791CD9171588890011FD1F /* APPViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35791CDA171588890011FD1F /* en */,
-			);
-			name = APPViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		35791CDC171588890011FD1F /* Debug */ = {
@@ -272,10 +275,16 @@
 		35791CDF171588890011FD1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CameraApp/Lapse-Prefix.pch";
-				INFOPLIST_FILE = "CameraApp/Lapse-Info.plist";
+				GCC_PREFIX_HEADER = "Lapse/Lapse-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Lapse/Lapse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = Lapse;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -283,10 +292,16 @@
 		35791CE0171588890011FD1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CameraApp/Lapse-Prefix.pch";
-				INFOPLIST_FILE = "CameraApp/Lapse-Info.plist";
+				GCC_PREFIX_HEADER = "Lapse/Lapse-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Lapse/Lapse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = Lapse;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
