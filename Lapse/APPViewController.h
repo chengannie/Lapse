@@ -2,13 +2,11 @@
 //  APPViewController.h
 //  Lapse
 //
-//  Created by Rafael Garcia Leiva on 10/04/13.
-//  Copyright (c) 2013 Appcoda. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface APPViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSCoding>
+@interface APPViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 

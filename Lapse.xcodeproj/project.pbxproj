@@ -27,6 +27,8 @@
 		593C7B4219B05C4900443B53 /* launch-screen-lapse-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 593C7B4119B05C4900443B53 /* launch-screen-lapse-blank.png */; };
 		593C7B4419B0651D00443B53 /* launch-screen-lapse.png in Resources */ = {isa = PBXBuildFile; fileRef = 593C7B4319B0651D00443B53 /* launch-screen-lapse.png */; };
 		596C682919B06BD400ED7472 /* launch-screen-lapse-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 596C682819B06BD400ED7472 /* launch-screen-lapse-bottom.png */; };
+		596C682D19B11B6700ED7472 /* APPOriginalModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596C682B19B11B6700ED7472 /* APPOriginalModalViewController.m */; };
+		596C682E19B11B6700ED7472 /* APPOriginalModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596C682C19B11B6700ED7472 /* APPOriginalModalViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,9 @@
 		593C7B4119B05C4900443B53 /* launch-screen-lapse-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-screen-lapse-blank.png"; sourceTree = "<group>"; };
 		593C7B4319B0651D00443B53 /* launch-screen-lapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-screen-lapse.png"; sourceTree = "<group>"; };
 		596C682819B06BD400ED7472 /* launch-screen-lapse-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-screen-lapse-bottom.png"; sourceTree = "<group>"; };
+		596C682A19B11B6700ED7472 /* APPOriginalModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPOriginalModalViewController.h; sourceTree = "<group>"; };
+		596C682B19B11B6700ED7472 /* APPOriginalModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPOriginalModalViewController.m; sourceTree = "<group>"; };
+		596C682C19B11B6700ED7472 /* APPOriginalModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPOriginalModalViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +116,9 @@
 				5902E8C919B04EFF009C039B /* APPViewController.h */,
 				5902E8CA19B04EFF009C039B /* APPViewController.m */,
 				5902E8E119B04F95009C039B /* APPViewController.xib */,
+				596C682A19B11B6700ED7472 /* APPOriginalModalViewController.h */,
+				596C682B19B11B6700ED7472 /* APPOriginalModalViewController.m */,
+				596C682C19B11B6700ED7472 /* APPOriginalModalViewController.xib */,
 				5902E8CD19B04F09009C039B /* OverlayImageView.h */,
 				5902E8CE19B04F09009C039B /* OverlayImageView.m */,
 				592C86C419B03D4700A9977C /* Images.xcassets */,
@@ -197,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				593C7B4419B0651D00443B53 /* launch-screen-lapse.png in Resources */,
+				596C682E19B11B6700ED7472 /* APPOriginalModalViewController.xib in Resources */,
 				596C682919B06BD400ED7472 /* launch-screen-lapse-bottom.png in Resources */,
 				5902E8D919B04F2B009C039B /* camera-icon-custom.png in Resources */,
 				5902E8E219B04F95009C039B /* APPViewController.xib in Resources */,
@@ -219,6 +228,7 @@
 			files = (
 				593C7B3E19B0567300443B53 /* main.m in Sources */,
 				5902E8E819B0507B009C039B /* APPViewController.xib in Sources */,
+				596C682D19B11B6700ED7472 /* APPOriginalModalViewController.m in Sources */,
 				5902E8CC19B04EFF009C039B /* APPViewController.m in Sources */,
 				5902E8CF19B04F09009C039B /* OverlayImageView.m in Sources */,
 				5902E8CB19B04EFF009C039B /* APPAppDelegate.m in Sources */,
