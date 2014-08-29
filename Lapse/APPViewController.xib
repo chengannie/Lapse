@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="APPViewController">
             <connections>
+                <outlet property="buttonbackground" destination="SmF-jy-9yC" id="gpH-bk-NgS"/>
                 <outlet property="imageView" destination="CHD-rY-STx" id="bgE-Hl-58J"/>
                 <outlet property="view" destination="6" id="7"/>
             </connections>
@@ -16,8 +17,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="SmF-jy-9yC">
+                    <rect key="frame" x="0.0" y="428" width="320" height="140"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="26">
-                    <rect key="frame" x="45" y="448" width="100" height="100"/>
+                    <rect key="frame" x="20" y="448" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="library-button-custom.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,7 +32,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="22">
-                    <rect key="frame" x="177" y="448" width="100" height="100"/>
+                    <rect key="frame" x="200" y="448" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Take Photo" image="camera-button-custom.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,7 +46,6 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
     </objects>
     <resources>

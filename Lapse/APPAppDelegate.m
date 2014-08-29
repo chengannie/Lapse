@@ -18,6 +18,12 @@
     // Override point for customization after application launch.
     self.viewController = [[APPViewController alloc] initWithNibName:@"APPViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
+    
+    UIGraphicsBeginImageContext(self.window.frame.size);
+    [[UIImage imageNamed:@"launch-screen-lapse.png"] drawInRect:self.window.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.window.backgroundColor = [UIColor colorWithPatternImage:image];
     [self.window makeKeyAndVisible];
     return YES;
 }

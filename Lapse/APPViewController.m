@@ -21,6 +21,7 @@
 @interface APPViewController ()
 
 @property (strong, atomic) ALAssetsLibrary *library;
+@property (weak, nonatomic) IBOutlet UIImageView *buttonbackground;
 
 @end
 
@@ -166,6 +167,8 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    // set button background to lapse colors
+    self.buttonbackground.image = [UIImage imageNamed:@"launch-screen-lapse-bottom.png"];
     
 //    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:photo];
 //    [self.view addSubview:backgroundView];
