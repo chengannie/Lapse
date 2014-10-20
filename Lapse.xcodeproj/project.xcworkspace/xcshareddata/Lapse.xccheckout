@@ -12,20 +12,24 @@
 	<dict>
 		<key>661F2085-BA9A-4D9F-AA88-8855AA9C1979</key>
 		<string>ssh://github.com/chengannie/Lapse.git</string>
+		<key>E54E22482AD44390B083D12B49F7E539698D79FF</key>
+		<string>github.com:chengannie/Lapse.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Lapse.xcodeproj/project.xcworkspace</string>
+	<string>Lapse.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>661F2085-BA9A-4D9F-AA88-8855AA9C1979</key>
+		<string>../../../Lapse</string>
+		<key>E54E22482AD44390B083D12B49F7E539698D79FF</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/chengannie/Lapse.git</string>
+	<string>github.com:chengannie/Lapse.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>661F2085-BA9A-4D9F-AA88-8855AA9C1979</string>
+	<string>E54E22482AD44390B083D12B49F7E539698D79FF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>661F2085-BA9A-4D9F-AA88-8855AA9C1979</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Lapse</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E54E22482AD44390B083D12B49F7E539698D79FF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Lapse-actual</string>
 		</dict>
 	</array>
 </dict>

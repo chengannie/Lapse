@@ -292,7 +292,7 @@
         {
             // get overlay image and flip and reset
             UIImage* photo = self.imageView.image;
-            UIImage * flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationRight]; // i have no idea why I had to use Right here but LeftMirrored elsewhere...maybe something to do with how the image is stored, which is different than it's displayed orientation?
+            UIImage* flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationRight]; // i have no idea why I had to use Right here but LeftMirrored elsewhere...maybe something to do with how the image is stored, which is different than it's displayed orientation?
             self.imageView.image = flippedImage;
             self.picker.cameraOverlayView = self.imageView;
         }
