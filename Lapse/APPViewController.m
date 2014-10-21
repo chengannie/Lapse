@@ -10,11 +10,14 @@
 
 // iPhone5 screen dimensions:
 #define SCREEN_WIDTH  320
-#define SCREEN_HEIGTH 568
+#define SCREEN_HEIGHT 568
 
 // transform values for full screen support
 #define CAMERA_TRANSFORM_X 1
 #define CAMERA_TRANSFORM_Y 1.3333 // iOS 7?
+
+// tag number for overlay image view
+#define OVERLAY_TAG 1
 
 @interface APPViewController ()
 
@@ -108,18 +111,32 @@
     
     // set overlay
     if (self.imageView) {
-//        UIImageView *overlayView = self.imageView;
-//        [overlayView setAlpha:0.5f];
-//        self.picker.cameraOverlayView = overlayView;
-        UIImageView *overlayView = [[UIImageView alloc] init];
-        [overlayView addSubview:self.imageView];
+
+        // add overlayView
+        // see reason for why i have to make frame shorter so it doesn't cover bottom buttons :P http://stackoverflow.com/questions/19018658/after-taking-picture-cannot-select-use-photo-or-retake
+        UIView *overlayView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 200)];
+        overlayView.userInteractionEnabled = @YES;
+        
+        // make image transparent
+        UIImageView *overlayImage = self.imageView;
+        [overlayImage setAlpha:0.5f];
+        
+        // tag image later so it can be changed later without affecting the switch button
+        overlayImage.tag = OVERLAY_TAG;
+        
+        [overlayView addSubview:overlayImage];
         
         // add UISwitch to toggle overlay on and off
-        UISwitch *mySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        [mySwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
-        [overlayView addSubview:mySwitch];
-        
-        [overlayView setAlpha:0.5f];
+        UISwitch *overlayToggle = [[UISwitch alloc] initWithFrame:CGRectMake(260, 35, 0, 0)];
+        // make switch on by default, unless there is no overlay image
+        if (self.imageView.image) {
+            [overlayToggle setOn:YES animated:YES];
+        }
+        else {
+            [overlayToggle setOn:NO animated:YES];
+        }
+        [overlayToggle addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+        [overlayView addSubview:overlayToggle];
         
         self.picker.cameraOverlayView = overlayView;
     }
@@ -207,12 +224,12 @@
     }
 }
 
-#pragma mark - Overlay photo flipper button
+#pragma mark - flip/overlay toggle buttons
 
 // when Flip button clicked, the overlay photo (i.e. the photo displayed) will flip horizontally
 // useful to flip photos selected from photo library that were originally taken with rear-facing camera
 - (IBAction)flipPhoto:(UIButton *)sender {
-    if (self.imageView) {
+    if (self.imageView.image) {
         UIImage *photo = self.imageView.image;
         
         // if photo oriented leftmirrored, flip both background and imageview
@@ -250,6 +267,44 @@
             NSLog(@"This shouldn't be happening..");
         }
     }
+    // if no overlay image, show alert
+    else {
+        UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"No Overlay Available"
+                                                         message:@"Take a photo first!"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles: nil];
+        [alert show];
+    }
+}
+
+// changeSwitch function for overlay toggle switch
+- (void)changeSwitch:(id)sender {
+        
+        // if there is an overlay image
+        if (self.imageView.image) {
+            // if switch on
+            if([sender isOn]){
+                // don't hide image
+                [((UIImageView *)[self.picker.cameraOverlayView viewWithTag:OVERLAY_TAG]) setHidden:NO];
+            } else {
+                // hide image
+                [((UIImageView *)[self.picker.cameraOverlayView viewWithTag:OVERLAY_TAG]) setHidden:YES];
+            }
+        }
+        // show alert that there is no overlay image
+        else
+        {
+            UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"No Overlay Available"
+                                                             message:@"Take a photo first!"
+                                                            delegate:self
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles: nil];
+            [alert show];
+            
+            // turn switch off
+            [sender setOn:NO animated:YES];
+        }
 }
 
 #pragma mark - Image Picker Controller delegate methods
@@ -342,7 +397,7 @@
 }
 
 -(void)handleNotification:(NSNotification *)message {
-    // (called before didFinishPickingMediaWithInfo)
+    // (called before didFinishPickingMediaWithInfo), after photo taken (preview screen)
     if ([[message name] isEqualToString:@"_UIImagePickerControllerUserDidCaptureItem"]) {
         if (self.picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
         {
@@ -350,7 +405,9 @@
             UIImage* photo = self.imageView.image;
             UIImage* flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationRight]; // i have no idea why I had to use Right here but LeftMirrored elsewhere...maybe something to do with how the image is stored, which is different than it's displayed orientation?
             self.imageView.image = flippedImage;
-            self.picker.cameraOverlayView = self.imageView;
+            
+            // update current overlay view's image to be the new flipped image
+            ((UIImageView *)[self.picker.cameraOverlayView viewWithTag:OVERLAY_TAG]).image = flippedImage;
         }
     }
     if ([[message name] isEqualToString:@"_UIImagePickerControllerUserDidRejectItem"]) {
@@ -360,29 +417,11 @@
             UIImage* photo = self.imageView.image;
             UIImage * flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
             self.imageView.image = flippedImage;
-            self.picker.cameraOverlayView = self.imageView;
+            
+            // update current overlay view's image to be the new flipped image
+            ((UIImageView *)[self.picker.cameraOverlayView viewWithTag:OVERLAY_TAG]).image = flippedImage;
         }
     }
-}
-
-// changeSwitch function used in handleNotification method right above
-- (void)changeSwitch:(id)sender {
-    
-    if([sender isOn]){
-        NSLog(@"Switch is ON");
-        
-        // set overlay
-        if (self.imageView) {
-            UIImageView *overlayView = self.imageView;
-            [overlayView setAlpha:0.5f];
-            self.picker.cameraOverlayView = overlayView;
-        }
-        
-    } else{
-        NSLog(@"Switch is OFF");
-        self.picker.cameraOverlayView = nil;
-    }
-    
 }
 
 // for NSUserDefaults stuff

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APPViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+@interface APPViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
