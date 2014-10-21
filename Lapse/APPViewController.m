@@ -58,6 +58,8 @@
     if (self.userDefaultsImage)
     {
         self.imageView.image = self.userDefaultsImage;
+        // to hide random imageView overlay that only appears after first launch
+        [self.imageView setHidden:YES];
         
         // also set retrieved image as background for later (useful if user takes picture but then cancels -- this will get picture back again.)
         UIGraphicsBeginImageContext(self.imageView.frame.size);
@@ -338,13 +340,16 @@
             self.imageView.image = photo;
         }
     }
-    // flip photo if selected because FOR MY USE CASE ONLY, i'll only be selecting selfies that need to be flipped when i take the picture
+    // flip photo if selected because FOR MY USE CASE ONLY, i'll only be selecting selfies that need to be flipped when i take the picture; you can manually re-flip later with flip button if needed
     else if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
     {
         // flip photo (ideally only if front facing, but not possible to detect if photo was originally taken front facing...so this flips all photos. I added a Flip button (see flipPhoto method) so the user can manually flip rear-facing photos back again.
         UIImage * flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
         photo = flippedImage;
         self.imageView.image = photo;
+        
+        // to hide random imageView overlay that only appears after first launch
+        [self.imageView setHidden:YES];
     }
 
     
