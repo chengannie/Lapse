@@ -108,8 +108,19 @@
     
     // set overlay
     if (self.imageView) {
-        UIImageView *overlayView = self.imageView;
+//        UIImageView *overlayView = self.imageView;
+//        [overlayView setAlpha:0.5f];
+//        self.picker.cameraOverlayView = overlayView;
+        UIImageView *overlayView = [[UIImageView alloc] init];
+        [overlayView addSubview:self.imageView];
+        
+        // add UISwitch to toggle overlay on and off
+        UISwitch *mySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        [mySwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+        [overlayView addSubview:mySwitch];
+        
         [overlayView setAlpha:0.5f];
+        
         self.picker.cameraOverlayView = overlayView;
     }
     
@@ -129,7 +140,7 @@
 
 #pragma mark - Action sheet
 
-// show modal view for original photo options
+// show action sheet to use original (i.e. pinned) photo or to pin current photo
 - (IBAction)originalPhoto:(UIButton *)sender {
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
@@ -196,6 +207,51 @@
     }
 }
 
+#pragma mark - Overlay photo flipper button
+
+// when Flip button clicked, the overlay photo (i.e. the photo displayed) will flip horizontally
+// useful to flip photos selected from photo library that were originally taken with rear-facing camera
+- (IBAction)flipPhoto:(UIButton *)sender {
+    if (self.imageView) {
+        UIImage *photo = self.imageView.image;
+        
+        // if photo oriented leftmirrored, flip both background and imageview
+        if (photo.imageOrientation == UIImageOrientationLeftMirrored)
+        {
+            // flipp imageView
+            UIImage *flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationRight];
+            photo = flippedImage;
+            self.imageView.image = photo;
+            
+            // flip background
+            UIGraphicsBeginImageContext(self.imageView.frame.size);
+            [flippedImage drawInRect:self.imageView.bounds];
+            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+
+        }
+        // if photo oriented right, flip both background and imageview
+        else if (photo.imageOrientation == UIImageOrientationRight)
+        {
+            UIImage *flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
+            photo = flippedImage;
+            self.imageView.image = photo;
+            
+            // flip background
+            UIGraphicsBeginImageContext(self.imageView.frame.size);
+            [flippedImage drawInRect:self.imageView.bounds];
+            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+        }
+        else
+        {
+            NSLog(@"This shouldn't be happening..");
+        }
+    }
+}
+
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -217,7 +273,7 @@
     // flip photo if selected because FOR MY USE CASE ONLY, i'll only be selecting selfies that need to be flipped when i take the picture
     else if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
     {
-        // flip photo if front facing
+        // flip photo (ideally only if front facing, but not possible to detect if photo was originally taken front facing...so this flips all photos. I added a Flip button (see flipPhoto method) so the user can manually flip rear-facing photos back again.
         UIImage * flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
         photo = flippedImage;
         self.imageView.image = photo;
@@ -300,13 +356,33 @@
     if ([[message name] isEqualToString:@"_UIImagePickerControllerUserDidRejectItem"]) {
         if (self.picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
         {
-            // If retake button hit, reflip overflay again get (basically undoing code right above)
+            // If retake button hit, reflip overlay again (basically undoing code right above)
             UIImage* photo = self.imageView.image;
             UIImage * flippedImage = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
             self.imageView.image = flippedImage;
             self.picker.cameraOverlayView = self.imageView;
         }
     }
+}
+
+// changeSwitch function used in handleNotification method right above
+- (void)changeSwitch:(id)sender {
+    
+    if([sender isOn]){
+        NSLog(@"Switch is ON");
+        
+        // set overlay
+        if (self.imageView) {
+            UIImageView *overlayView = self.imageView;
+            [overlayView setAlpha:0.5f];
+            self.picker.cameraOverlayView = overlayView;
+        }
+        
+    } else{
+        NSLog(@"Switch is OFF");
+        self.picker.cameraOverlayView = nil;
+    }
+    
 }
 
 // for NSUserDefaults stuff
