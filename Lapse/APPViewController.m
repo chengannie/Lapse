@@ -132,6 +132,8 @@
         // make switch on by default, unless there is no overlay image
         if (self.imageView.image) {
             [overlayToggle setOn:YES animated:YES];
+            // make sure overlay is on (it might have been turned off the last time camera was used)
+            [overlayImage setHidden:NO];
         }
         else {
             [overlayToggle setOn:NO animated:YES];
@@ -296,7 +298,7 @@
         if (self.imageView.image) {
             // if switch on
             if([sender isOn]){
-                // don't hide image
+                // show image
                 [((UIImageView *)[self.picker.cameraOverlayView viewWithTag:OVERLAY_TAG]) setHidden:NO];
             } else {
                 // hide image
