@@ -127,7 +127,8 @@
         [overlayView addSubview:overlayImage];
         
         // add UISwitch to toggle overlay on and off
-        UISwitch *overlayToggle = [[UISwitch alloc] initWithFrame:CGRectMake(260, 35, 0, 0)];
+        UISwitch *overlayToggle = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        [overlayToggle setCenter:CGPointMake(self.view.center.x, 47)];
         // make switch on by default, unless there is no overlay image
         if (self.imageView.image) {
             [overlayToggle setOn:YES animated:YES];
@@ -137,6 +138,16 @@
         }
         [overlayToggle addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
         [overlayView addSubview:overlayToggle];
+        
+        // add label on top of UISwitch
+        UILabel *overlayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+        [overlayLabel setCenter:CGPointMake(self.view.center.x, 17)];
+        [overlayLabel setTextColor:[UIColor whiteColor]];
+        [overlayLabel setBackgroundColor:[UIColor clearColor]];
+        [overlayLabel setFont:[UIFont fontWithName: @"Helvetica" size: 18.0f]];
+        [overlayLabel setTextAlignment:NSTextAlignmentCenter];
+        [overlayLabel setText:@"Overlay"];
+        [overlayView addSubview:overlayLabel];
         
         self.picker.cameraOverlayView = overlayView;
     }
